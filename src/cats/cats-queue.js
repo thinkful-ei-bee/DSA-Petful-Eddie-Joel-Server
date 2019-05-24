@@ -14,25 +14,34 @@ setInterval(() => {
 
 function getById(queue, id) {
   let current = queue;
-
   // console.log(`id: ${id}`);
   // console.log(`current.data.id: ${current.data.id} `);
 
   while(current.data.id !== id) {
-
     if(current.next === null || current.next === undefined) {
       return { Error: 'Not found' }
     }
-
     current = current.next;
   }
 
   if (current.data.id === id) {
-    console.log('found it')
     return current.data;
   }
-
-  //getById(current.next, id)
+  else {
+    return { Error: 'Something went wrong' }
+  }
 }
 
-module.exports = { setInterval, cats, getById }
+function next(cats) {
+  return cats.first.data;
+}
+
+function del(cats) {
+  if (cats.fist !== undefined || cats.fist !== null) {
+    cats.dequeue();
+    return;
+  }
+  return { Error: 'del() can not delete on empty' };
+}
+
+module.exports = { setInterval, cats, getById, next, del }

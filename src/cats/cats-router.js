@@ -9,6 +9,16 @@ CatsRouter
   .get((req, res, next) => {
     res.json(CatsQueue.cats.first)
   })
+  .delete((req, res, next) => {
+    CatsQueue.del(CatsQueue.cats);
+    res.status(202).send;
+  }) 
+
+CatsRouter
+  .route('/next')
+  .get((req, res, next) => {
+    res.json(CatsQueue.next(CatsQueue.cats))
+  })
 
 CatsRouter
   .route('/:id')
@@ -17,5 +27,9 @@ CatsRouter
     // console.log(id)
     res.json(CatsQueue.getById(CatsQueue.cats.first, id))
   })
+
+
+
+
 
 module.exports = CatsRouter
