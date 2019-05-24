@@ -1,16 +1,12 @@
 const express = require('express')
-const CatsServce = require('./cats-service')
+const CatsService = require('./cats-service')
 
 const CatsRouter = express.Router()
 
 CatsRouter
-  .route('/api/cat')
+  .route('/cat')
   .get((req, res, next) => {
-    CatsServce.getCat()
-      .then(cat => {
-        res.json(CatsServce.serializeCat)
-      })
-      .catch(next)
+    res.json(CatsService.getCat())
   })
 
 module.exports = CatsRouter
