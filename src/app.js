@@ -1,10 +1,13 @@
 // require('dotenv').config()
 const express = require('express')
+const app = express()
 const cors = require('cors')
 const { NODE_ENV } = require('./config')
+
 const CatsRouter = require('./cats/cats-router')
 const DogsRouter = require('./dogs/dogs-router')
-const app = express()
+
+const CatsQ = require('./cats/cats-queue')
 
 app.use(cors());
 
